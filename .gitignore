@@ -36,6 +36,13 @@ intermediate
 publish
 .idea
 
+#Laravel 4 specific
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
+
+
 #NOD specific
 */config/*
 */cache/*
