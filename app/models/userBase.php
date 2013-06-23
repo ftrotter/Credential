@@ -5,8 +5,10 @@
 
 	class userBase extends BaseORM{ //which extends Eloquent...
 
-		public static $table = 'users';
- 
+		var $table = 'users';
+
+		protected $guarded = array(); //everything can be added via auto-fill... override this in custom code...
+		
 
 	}//the end of class user		
 ?>

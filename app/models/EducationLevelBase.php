@@ -5,8 +5,10 @@
 
 	class EducationLevelBase extends BaseORM{ //which extends Eloquent...
 
-		public static $table = 'EducationLevels';
- 
+		var $table = 'EducationLevels';
+
+		protected $guarded = array(); //everything can be added via auto-fill... override this in custom code...
+		
 
 	}//the end of class EducationLevel		
 ?>

@@ -1,9 +1,9 @@
 <?php 
 //This is the base class for the ORM
 
-	namespace App\Models;
+//	namespace App\Models;
 
-	class BaseORM extends \Eloquent{ //which extends Eloquent...
+	class BaseORM extends Eloquent{ //which extends Eloquent...
 
 
 		//we need to override the core ORM functions to be aware of the true/false
@@ -47,12 +47,12 @@
 
 		function get_field_types(){
 
-			$sql = 'show columns from '. $this->table();
-			$fields = DB::query($sql);
+			$sql = 'show columns from '. $this->table;
+			$fields = DB::select($sql);
 
 			$return_me = array();
 			foreach($fields as  $this_field){
-				$return_me[$this_field->field] = $this_field->type;
+				$return_me[$this_field->Field] = $this_field->Type;
 			}
 
 			return($return_me);
@@ -63,12 +63,12 @@
 		function get_fields(){ 
 			//why is DB reflection not in Laravel 3? hmmmph..
 
-			$sql = 'show columns from '. $this->table();
-			$fields = DB::query($sql);
+			$sql = 'show columns from '. $this->table;
+			$fields = DB::select($sql);
 
 			$return_me = array();
 			foreach($fields as  $this_field){
-				$return_me[] = $this_field->field;
+				$return_me[] = $this_field->Field;
 			}
 
 			return($return_me);
@@ -148,7 +148,7 @@
 		$fields_array = array();
 		$data_array = array();
 
-		$table_saved_data = $this->to_array(); 
+		$table_saved_data = $this->toArray(); 
 		
 		$fields = $this->get_fields();
 		$table_data = array();
