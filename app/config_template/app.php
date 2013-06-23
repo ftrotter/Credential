@@ -2,6 +2,30 @@
 
 return array(
 
+
+        'site_name' => 'NOD Cred',
+        'copyright' => '© Not Only Development 2013',
+
+        'menu' => array (
+                        0 => array (
+                                'name' => 'Home',
+                                'url' => '/',
+                                'icon' => '',
+                                ),
+                        1 => array (
+                                'name' => 'Doctors',
+                                'url' => "/doctors/list",
+                                'icon' => '',
+                                ),
+                        2 => array (
+                                'name' => 'Data',
+                                'url' => "/ORM",
+                                'icon' => '',
+                                ),
+
+                        ),
+
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
