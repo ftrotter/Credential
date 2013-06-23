@@ -21,7 +21,7 @@ class BaseController extends Controller {
 
         public function _render($template_name){
 
-                $base_url = URL::base();
+                $base_url = URL::to('/');
                 $this->view_data['base_url'] = $base_url;
 
                 $this->view_data['title'] = Config::get('application.site_name');
