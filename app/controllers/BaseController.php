@@ -24,30 +24,12 @@ class BaseController extends Controller {
                 $base_url = URL::to('/');
                 $this->view_data['base_url'] = $base_url;
 
-                $this->view_data['title'] = Config::get('application.site_name');
-                $this->view_data['copyright'] = Config::get('application.copyright');
+                $this->view_data['title'] = Config::get('app.site_name');
+                $this->view_data['copyright'] = Config::get('app.copyright');
 		
-                //build the menu
-                $menu = array (
-                        0 => array (
-                                'name' => 'Home',
-                                'url' => $base_url,
-                                'icon' => '',
-                                ),
-                        1 => array (
-                                'name' => 'Something',
-                                'url' => "$base_url"."something/list",
-                                'icon' => '',
-                                ),
-                        2 => array (
-                                'name' => 'Else',
-                                'url' => "$base_url"."else/list",
-                                'icon' => '',
-                                ),
-
-                        );
-
+		$menu = Config::get('app.menu');
                 $this->view_data['menu'] = $menu;
+		
 
                 $menu_contents = View::make('menu',$this->view_data);
 		$this->view_data['menu_contents'] = $menu_contents;

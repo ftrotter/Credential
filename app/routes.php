@@ -37,6 +37,7 @@ Route::get('/ORM/{object_name}/new',function($object_name){
                 $view_data['form_json'] = $object->getAlpacaJSON();
                 $view_data['object_name'] = $object_name;
                 $view_data['view_contents'] = View::make('ormform',$view_data);
+                $view_data['menu_contents'] = View::make('menu',$view_data);
                 return View::make('html',$view_data);
         }else{
                 return "<h1>Cough... sputter... I can't find an ORM called $object_name</h1>";
@@ -52,6 +53,7 @@ Route::get('/ORM/{object_name}/{number}',function($object_name, $number){
                 $view_data['form_json'] = $object->getAlpacaJSON();
                 $view_data['object_name'] = $object_name;
                 $view_data['view_contents'] = View::make('ormform',$view_data);
+                $view_data['menu_contents'] = View::make('menu',$view_data);
                 return View::make('html',$view_data);
         }else{
                 return "<h1>Cough... sputter... I can't find an ORM called $object_name</h1>";
@@ -238,31 +240,25 @@ function main_html_wrap($stuff){
         $view_data = standard_view_data();
         $stuff = "<div class='container'>\n$stuff\n</div>";
         $view_data['view_contents'] = $stuff;
+
+	$menu_contents = View::make('menu',$view_data);
+	$view_data['menu_contents'] = $menu_contents;
+
         return View::make('html',$view_data);
 }
 //TODO pull intelligently from config...
 function standard_view_data(){
 
         $base_url = URL::to('/');
+	$menu = Config::get('app.menu');
+	$site_name = Config::get('app.site_name');
+	$copyright = Config::get('app.copyright');
         $view_data = array(
                 'displayName' => 'UserName Here',
-                'copyright' => '© Not Only Development 2013',
-                'title' => 'NOD Cred',
+                'copyright' => $copyright,
+                'title' => $site_name,
                 'base_url' => $base_url,
-                'menu' => array( 0 => array(
-                                'name' => 'Dashboard',
-                                'url' => "$base_url/dashboard/",
-                                'icon' => '',
-                                ),
-                                1 => array(
-                                'name' => 'Data',
-                                'url' => "$base_url/ORM",
-                                'icon' => '',
-                                ),
-
-
-
-                        ),
+                'menu' => $menu,
         );
 
 	return($view_data);
