@@ -1,7 +1,7 @@
 <?php
 	
 
-	class User extends  UserBase{ 
+	class Test extends  TestBase{ 
 		//put custom code here... look in the base class for generated relations..
 		
 	}
