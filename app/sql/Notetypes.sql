@@ -16,31 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Genders`
+-- Table structure for table `Notetypes`
 --
 
-DROP TABLE IF EXISTS `Genders`;
+DROP TABLE IF EXISTS `Notetypes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Genders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `created_by_User_id` int(11) DEFAULT NULL,
-  `modified_by_User_id` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+CREATE TABLE `Notetypes` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Genders`
+-- Dumping data for table `Notetypes`
 --
 
-LOCK TABLES `Genders` WRITE;
-/*!40000 ALTER TABLE `Genders` DISABLE KEYS */;
-INSERT INTO `Genders` VALUES (1,'Male',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'Female',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'Other',NULL,NULL,'0000-00-00 00:00:00','0000-00-00 00:00:00');
-/*!40000 ALTER TABLE `Genders` ENABLE KEYS */;
+LOCK TABLES `Notetypes` WRITE;
+/*!40000 ALTER TABLE `Notetypes` DISABLE KEYS */;
+INSERT INTO `Notetypes` VALUES (1,'Individual'),(2,'Status'),(3,'Credential'),(4,'Certificate'),(5,'License'),(6,'Network'),(7,'Practice'),(8,'Hospital'),(9,'Specialty'),(10,'Insurance'),(11,'Education'),(99,'Note');
+/*!40000 ALTER TABLE `Notetypes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-25  8:47:03
+-- Dump completed on 2013-06-25  8:47:23

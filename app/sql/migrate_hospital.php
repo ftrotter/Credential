@@ -65,7 +65,7 @@ VALUES
 '$HospitalStreet2', 
 '$HospitalZip', 
 '$texas_state_id', 
-'1', '0', '1', '0', '0', NOW(), NOW());
+'$city_id', '0', '1', '0', '0', NOW(), NOW());
 ";
 		
 		mysql_query($new_address_sql) or die("no address for you! \n $new_address_sql \n".mysql_error());

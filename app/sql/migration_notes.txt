@@ -1,0 +1,47 @@
+carriers -> Carriers is manually migrated, including keeping the current ids no script...
+countries -> Countrys is manually migrated
+credentialorganizations -> CredentialOrganization is manually migrated..
+educationcodes -> EducationLevels is manually migrated 
+ethniccodes -> Ethniccodes is manually migrated
+exportbatches not migrated
+exportrecords not migrated
+facilities data is empty on the old data set... not migrating...
+
+hospital migration requires a script...
+hospital -> Hospital
+	-> Address
+       -> Phone
+run hospital_migration.php
+
+languagecodes -> Languages is manually migrated
+licensecodes -> Licensecodes is manually migrated
+
+medicalboard migration requires a script
+medicalboard -> Medicalboards
+	-> Address
+	-> Phone
+	-> Phone again as fax..
+
+medicalschool -> EducationInstitutions manually migrated. Address and phone not migrated (because they are missing in any case...)
+networkcodes -> Networks manually migrated
+notecatagories -> Notetypes manually migrated
+panels -> Panels manually migrated
+patientacceptcodes -> Patientacceptcodes manually migrated
+phonecovereagecodes -> Phonecoveragecodes mangually migrated
+privileges -> Privileges manually migrated
+professioncodes -> Professioncodes manually migrated..
+servicecodes -> Servicecodes manually migrated...
+
+
+
+
+
+provideragents this is a many to many on providers to agents, but there is no agent table that I can find..
+
+
+
+
+
+
+ALTER TABLE `Ethniccodes`  
+ADD `created_by_User_id` INT(11) NOT NULL,  ADD `modified_by_User_id` INT(11) NOT NULL,  ADD `created_at` DATETIME NOT NULL,  ADD `updated_at` DATETIME NOT NULL 
