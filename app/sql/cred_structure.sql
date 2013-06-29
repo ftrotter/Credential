@@ -41,6 +41,28 @@ CREATE TABLE `Addresss` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `Billingcompanys`
+--
+
+DROP TABLE IF EXISTS `Billingcompanys`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Billingcompanys` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `Address_id` int(11) NOT NULL,
+  `Phone_id` int(11) NOT NULL,
+  `Fax_Phone_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `billing_representative` varchar(255) NOT NULL,
+  `check_payable_to` varchar(255) NOT NULL,
+  `billing_department_if_hospital` varchar(255) NOT NULL,
+  `is_bill_electronic` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `Carriers`
 --
 
@@ -122,6 +144,11 @@ DROP TABLE IF EXISTS `CredentialOrganizations`;
 CREATE TABLE `CredentialOrganizations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
+  `Address_id` int(11) NOT NULL,
+  `Phone_id` int(11) NOT NULL,
+  `Fax_Phone_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `credentialing_contact` varchar(255) NOT NULL,
   `created_by_User_id` int(11) DEFAULT NULL,
   `modified_by_User_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -131,13 +158,27 @@ CREATE TABLE `CredentialOrganizations` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `DocumentState`
+-- Table structure for table `Days`
 --
 
-DROP TABLE IF EXISTS `DocumentState`;
+DROP TABLE IF EXISTS `Days`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `DocumentState` (
+CREATE TABLE `Days` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `DocumentStates`
+--
+
+DROP TABLE IF EXISTS `DocumentStates`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `DocumentStates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `created_by_User_id` int(11) DEFAULT NULL,
@@ -303,6 +344,120 @@ CREATE TABLE `Hospitals` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `Hours`
+--
+
+DROP TABLE IF EXISTS `Hours`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Hours` (
+  `id` int(11) NOT NULL,
+  `Hoursprofile_id` int(11) NOT NULL,
+  `Day_id` int(11) NOT NULL,
+  `is_no_patients_seen` int(11) NOT NULL,
+  `morning_start_hour` int(11) NOT NULL,
+  `morning_stop_hour` int(11) NOT NULL,
+  `afternoon_start_hour` int(11) NOT NULL,
+  `afternoon_stop_hour` int(11) NOT NULL,
+  `evening_start_hour` int(11) NOT NULL,
+  `evening_stop_hour` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Hoursprofiles`
+--
+
+DROP TABLE IF EXISTS `Hoursprofiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Hoursprofiles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `IdentifierTypes`
+--
+
+DROP TABLE IF EXISTS `IdentifierTypes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `IdentifierTypes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Identifiers`
+--
+
+DROP TABLE IF EXISTS `Identifiers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Identifiers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Provider_id` int(11) NOT NULL,
+  `IdentifierType_id` int(11) NOT NULL,
+  `Issue_State_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `issue_date` datetime NOT NULL,
+  `expire_date` datetime NOT NULL,
+  `created_by_User_id` int(11) NOT NULL,
+  `modified_by_User_id` int(11) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3581 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Insurancecarriers`
+--
+
+DROP TABLE IF EXISTS `Insurancecarriers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Insurancecarriers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `Address_id` int(11) NOT NULL,
+  `Phone_id` int(11) NOT NULL,
+  `Fax_Phone_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Insurancecoverages`
+--
+
+DROP TABLE IF EXISTS `Insurancecoverages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Insurancecoverages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Insurancecarrier_id` int(11) NOT NULL,
+  `is_self_insured` int(11) NOT NULL,
+  `policy_number` varchar(255) NOT NULL,
+  `effective_date` datetime NOT NULL,
+  `expiration_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
+  `coverage_per_incident` int(11) NOT NULL,
+  `coverage_aggregate` int(11) NOT NULL,
+  `is_individual_coverage` int(11) NOT NULL,
+  `is_group_coverage` int(11) NOT NULL,
+  `length_of_time_with_carrier` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `Languages`
 --
 
@@ -337,6 +492,37 @@ CREATE TABLE `Licensecodes` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Malpracticeawards`
+--
+
+DROP TABLE IF EXISTS `Malpracticeawards`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Malpracticeawards` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Insurancecoverage_id` int(11) NOT NULL,
+  `incident_date` datetime NOT NULL,
+  `claim_date` datetime NOT NULL,
+  `claim_status` varchar(255) NOT NULL,
+  `amount_of_award` int(11) NOT NULL,
+  `amount_paid` int(11) NOT NULL,
+  `is_dismissed` int(11) NOT NULL,
+  `is_settled_with_prejudice` int(11) NOT NULL,
+  `is_settled_without_prejudice` int(11) NOT NULL,
+  `is_judgement_for_defendant` int(11) NOT NULL,
+  `is_judgement_for_plaintiff` int(11) NOT NULL,
+  `is_mediation_or_arbitration` int(11) NOT NULL,
+  `description_of_allegation` varchar(255) NOT NULL,
+  `description_of_alleged_injury` varchar(255) NOT NULL,
+  `is_primary_defendant` int(11) NOT NULL,
+  `number_of_codefendants` int(11) NOT NULL,
+  `your_involvement_description` varchar(255) NOT NULL,
+  `is_in_NPDB` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -488,6 +674,153 @@ CREATE TABLE `Phones` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `Practices`
+--
+
+DROP TABLE IF EXISTS `Practices`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Practices` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `select_name` varchar(255) NOT NULL,
+  `IRS_name` varchar(255) NOT NULL,
+  `Servicecode_id` int(11) NOT NULL,
+  `24hour_coverage_answering_service_is` int(11) NOT NULL,
+  `24hour_coverage_none_is` int(11) NOT NULL,
+  `24hour_coverage_voicemail_service_is` int(11) NOT NULL,
+  `24hour_coverage_voicemail_service_other_is` int(11) NOT NULL,
+  `accepts_all_new_patients_is` int(11) NOT NULL,
+  `accepts_existing_patients_payor_change_is` int(11) NOT NULL,
+  `accepts_new_medicaid_patients_is` int(11) NOT NULL,
+  `accepts_new_medicare_patients_is` int(11) NOT NULL,
+  `accepts_new_patients_referral_is` int(11) NOT NULL,
+  `accepts_vary_by_plan_new_patients_explanation` varchar(255) NOT NULL,
+  `additional_office_procedures` varchar(255) NOT NULL,
+  `anesthesia_admin_classes` varchar(255) NOT NULL,
+  `current_practice_location_is` int(11) NOT NULL,
+  `address_is_primary` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `group_name_corresponding_tax_id` varchar(255) NOT NULL,
+  `group_number_corresponding_tax_id` varchar(255) NOT NULL,
+  `handicapped_access_building_is` int(11) NOT NULL,
+  `handicapped_access_other` varchar(255) NOT NULL,
+  `handicapped_access_parking_is` int(11) NOT NULL,
+  `handicapped_access_restroom_is` int(11) NOT NULL,
+  `if_hospital_based_department_name` varchar(255) NOT NULL,
+  `if_no_current_location_expected_start_date` datetime NOT NULL,
+  `interpreters_0_Language_id` int(11) NOT NULL,
+  `interpreters_1_Language_id` int(11) NOT NULL,
+  `interpreters_2_Language_id` int(11) NOT NULL,
+  `interpreters_3_Language_id` int(11) NOT NULL,
+  `interpreters_4_Language_id` int(11) NOT NULL,
+  `is_ada_accessibility` int(11) NOT NULL,
+  `is_age_appropriate_immunizations_services` int(11) NOT NULL,
+  `is_allergy_injections_services` int(11) NOT NULL,
+  `is_allergy_skin_tests_services` int(11) NOT NULL,
+  `is_anesthesia_admin` int(11) NOT NULL,
+  `is_asthma_treatments_services` int(11) NOT NULL,
+  `is_cardiac_stress_test_services` int(11) NOT NULL,
+  `is_care_minor_lacerations_services` int(11) NOT NULL,
+  `is_childcare_services` int(11) NOT NULL,
+  `is_drawing_blood_services` int(11) NOT NULL,
+  `is_ekg` int(11) NOT NULL,
+  `is_flexible_sigmoidoscopy_services` int(11) NOT NULL,
+  `is_interpreters_avail` int(11) NOT NULL,
+  `is_iv_hydration_treatments_services` int(11) NOT NULL,
+  `is_lab_services_following` int(11) NOT NULL,
+  `is_lab_services_list_certs` int(11) NOT NULL,
+  `is_minority_business` int(11) NOT NULL,
+  `is_osteopathic_manipulations_services` int(11) NOT NULL,
+  `is_other_services` int(11) NOT NULL,
+  `is_physical_therapies_services` int(11) NOT NULL,
+  `is_provider_cert_adv_cardiac_life_support` int(11) NOT NULL,
+  `is_provider_cert_adv_neonatal_life_support` int(11) NOT NULL,
+  `is_provider_cert_adv_trauma_life_support` int(11) NOT NULL,
+  `is_provider_cert_advanced_ob_life_support` int(11) NOT NULL,
+  `is_provider_cert_basic_life_support` int(11) NOT NULL,
+  `is_provider_cert_cardio_pulmonary_resuscitation` int(11) NOT NULL,
+  `is_provider_cert_other` int(11) NOT NULL,
+  `is_provider_cert_pediatric_adv_life_support` int(11) NOT NULL,
+  `is_pulmonary_function_tests_services` int(11) NOT NULL,
+  `is_radiology_services` int(11) NOT NULL,
+  `is_routine_office_gynecology_services` int(11) NOT NULL,
+  `is_services_ASL_disabled` int(11) NOT NULL,
+  `is_services_TTY_disabled` int(11) NOT NULL,
+  `is_services_mental_physical_disabled` int(11) NOT NULL,
+  `is_services_other_disabled` int(11) NOT NULL,
+  `is_staff_cert_adv_cardiac_life_support` int(11) NOT NULL,
+  `is_staff_cert_adv_neonatal_life_support` int(11) NOT NULL,
+  `is_staff_cert_adv_trauma_life_support` int(11) NOT NULL,
+  `is_staff_cert_advanced_ob_life_support` int(11) NOT NULL,
+  `is_staff_cert_basic_life_support` int(11) NOT NULL,
+  `is_staff_cert_cardio_pulmonary_resuscitation` int(11) NOT NULL,
+  `is_staff_cert_other` int(11) NOT NULL,
+  `is_staff_cert_pediatric_adv_life_support` int(11) NOT NULL,
+  `is_trans_bus_accessible` int(11) NOT NULL,
+  `is_trans_other_accessible` int(11) NOT NULL,
+  `is_trans_train_accessible` int(11) NOT NULL,
+  `is_tympanometry_audiometry_services` int(11) NOT NULL,
+  `is_xray_services_following` int(11) NOT NULL,
+  `is_xray_services_list_certs` int(11) NOT NULL,
+  `lab_services_certs_list` varchar(255) NOT NULL,
+  `limitations_age_top` varchar(255) NOT NULL,
+  `limitations_female_only_is` int(11) NOT NULL,
+  `limitations_male_only_is` int(11) NOT NULL,
+  `limitations_other_explanation` varchar(255) NOT NULL,
+  `limitations_other_is` int(11) NOT NULL,
+  `location_listed_in_dir_is` int(11) NOT NULL,
+  `non_physician_0_Provider_id` int(11) NOT NULL,
+  `non_physician_1_Provider_id` int(11) NOT NULL,
+  `non_physician_2_Provider_id` int(11) NOT NULL,
+  `non_physician_3_Provider_id` int(11) NOT NULL,
+  `non_physician_4_Provider_id` int(11) NOT NULL,
+  `non_physician_5_Provider_id` int(11) NOT NULL,
+  `non_physician_provider_is` int(11) NOT NULL,
+  `office_manager_or_contact_fax_Phone_id` int(11) NOT NULL,
+  `office_manager_or_cantact_Phone_id` int(11) NOT NULL,
+  `other_services_explanation` varchar(255) NOT NULL,
+  `provider_cert_adv_cardiac_life_support_expire_date` datetime NOT NULL,
+  `provider_cert_adv_neonatal_life_support_expire_date` datetime NOT NULL,
+  `provider_cert_adv_trauma_life_support_expire_date` datetime NOT NULL,
+  `provider_cert_advanced_ob_life_support_expire_date` datetime NOT NULL,
+  `provider_cert_basic_life_support_expire_date` datetime NOT NULL,
+  `provider_cert_cardio_pulmonary_resuscitation_expire_date` datetime NOT NULL,
+  `provider_cert_other_expire_date` datetime NOT NULL,
+  `provider_cert_other_specify` varchar(255) NOT NULL,
+  `provider_cert_pediatric_adv_life_support_expire_date` datetime NOT NULL,
+  `service_type_group_multi_speciality_is` int(11) NOT NULL,
+  `service_type_group_primary_is` int(11) NOT NULL,
+  `service_type_group_single_specialty_is` int(11) NOT NULL,
+  `service_type_solo_primary_is` int(11) NOT NULL,
+  `service_type_solo_specialty_is` int(11) NOT NULL,
+  `services_other_disabled_explanation` varchar(255) NOT NULL,
+  `site_medicaid_number` varchar(255) NOT NULL,
+  `tax_id_number` varchar(255) NOT NULL,
+  `trans_other_accessible_explanation` varchar(255) NOT NULL,
+  `xray_services_certs_list` varchar(255) NOT NULL,
+  `Provider_0_Language_id` int(11) NOT NULL,
+  `Provider_1_Language_id` int(11) NOT NULL,
+  `Provider_2_Language_id` int(11) NOT NULL,
+  `Staff_0_Language_id` int(11) NOT NULL,
+  `Staff_1_Language_id` int(11) NOT NULL,
+  `Staff_2_Language_id` int(11) NOT NULL,
+  `Phone_id` int(11) NOT NULL,
+  `Fax_Phone_id` int(11) NOT NULL,
+  `Billingcompany_id` int(11) NOT NULL,
+  `Address_id` int(11) NOT NULL,
+  `CredentialOrganization_id` int(11) NOT NULL,
+  `NonPhysician_0_Provider_id` int(11) NOT NULL,
+  `NonPhysician_1_Provider_id` int(11) NOT NULL,
+  `NonPhysician_2_Provider_id` int(11) NOT NULL,
+  `NonPhysician_3_Provider_id` int(11) NOT NULL,
+  `NonPhysician_4_Provider_id` int(11) NOT NULL,
+  `NonPhysician_5_Provider_id` int(11) NOT NULL,
+  `Hoursprofile_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `Privileges`
 --
 
@@ -525,6 +858,21 @@ CREATE TABLE `Professioncodes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `ProviderCallcoverage`
+--
+
+DROP TABLE IF EXISTS `ProviderCallcoverage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ProviderCallcoverage` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Provider_id` int(11) NOT NULL,
+  `CallCoverage_Provider_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `ProviderCarriers`
 --
 
@@ -535,44 +883,13 @@ CREATE TABLE `ProviderCarriers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Provider_id` int(11) DEFAULT NULL,
   `Carrier_id` int(11) DEFAULT NULL,
-  `created_by_User_id` int(11) DEFAULT NULL,
-  `modified_by_User_id` int(11) DEFAULT NULL,
+  `created_by_User_id` int(11) NOT NULL,
+  `modified_by_User_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `ProviderCoverages`
---
-
-DROP TABLE IF EXISTS `ProviderCoverages`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ProviderCoverages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Provider_id` int(11) DEFAULT NULL,
-  `is_self_insured` tinyint(1) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `street` varchar(255) DEFAULT NULL,
-  `ste_apt_etc` varchar(255) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  `State_id` int(11) DEFAULT NULL,
-  `zip_code` int(11) DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
-  `policy_number` int(11) DEFAULT NULL,
-  `effective_date` datetime DEFAULT NULL,
-  `expiration_date` datetime DEFAULT NULL,
-  `occurrence_limit` int(11) DEFAULT NULL,
-  `aggregate_limit` int(11) DEFAULT NULL,
-  `coverage` varchar(255) DEFAULT NULL,
-  `created_by_User_id` int(11) DEFAULT NULL,
-  `modified_by_User_id` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `FK_ProviderCarriers_Providers` (`Provider_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5054 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -711,6 +1028,21 @@ CREATE TABLE `ProviderNetworks` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `ProviderPartners`
+--
+
+DROP TABLE IF EXISTS `ProviderPartners`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ProviderPartners` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Provider_id` int(11) NOT NULL,
+  `Partner_Provider_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `ProviderReferences`
 --
 
@@ -720,8 +1052,7 @@ DROP TABLE IF EXISTS `ProviderReferences`;
 CREATE TABLE `ProviderReferences` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Provider_id` int(11) DEFAULT NULL,
-  `ReferenceNPI` int(11) DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
+  `Reference_Provider_id` int(11) DEFAULT NULL,
   `created_by_User_id` int(11) DEFAULT NULL,
   `modified_by_User_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -742,8 +1073,6 @@ CREATE TABLE `ProviderSpecialitys` (
   `Provider_id` int(11) DEFAULT NULL,
   `is_primary` tinyint(1) DEFAULT NULL,
   `Speciality_id` int(11) DEFAULT NULL,
-  `created_by_User_id` int(11) DEFAULT NULL,
-  `modified_by_User_id` int(11) DEFAULT NULL,
   `Board_id` int(11) DEFAULT NULL,
   `initial_cert_date` datetime DEFAULT NULL,
   `recertification_date` datetime DEFAULT NULL,
@@ -751,6 +1080,8 @@ CREATE TABLE `ProviderSpecialitys` (
   `hmo` tinyint(1) DEFAULT NULL,
   `ppo` tinyint(1) DEFAULT NULL,
   `pos` tinyint(1) DEFAULT NULL,
+  `created_by_User_id` int(11) NOT NULL,
+  `modified_by_User_id` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -758,13 +1089,13 @@ CREATE TABLE `ProviderSpecialitys` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `ProviderStatuss`
+-- Table structure for table `ProviderStates`
 --
 
-DROP TABLE IF EXISTS `ProviderStatuss`;
+DROP TABLE IF EXISTS `ProviderStates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ProviderStatuss` (
+CREATE TABLE `ProviderStates` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `created_by_User_id` int(11) DEFAULT NULL,
@@ -784,7 +1115,7 @@ DROP TABLE IF EXISTS `Providers`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Providers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ProviderStatus_id` int(11) DEFAULT NULL,
+  `ProviderState_id` int(11) DEFAULT NULL,
   `select_name` varchar(255) NOT NULL,
   `last_name` varchar(255) DEFAULT NULL,
   `first_name` varchar(255) DEFAULT NULL,
@@ -805,22 +1136,6 @@ CREATE TABLE `Providers` (
   `Corr_email` varchar(255) DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
   `signature_date` datetime DEFAULT NULL,
-  `dea_number` varchar(255) DEFAULT NULL,
-  `dea_issue_date` datetime DEFAULT NULL,
-  `dea_exp_date` datetime DEFAULT NULL,
-  `dps_number` int(11) DEFAULT NULL,
-  `dps_issue_date` datetime DEFAULT NULL,
-  `dps_exp_date` datetime DEFAULT NULL,
-  `upin` varchar(255) DEFAULT NULL,
-  `npi` int(11) DEFAULT NULL,
-  `pan` varchar(255) DEFAULT NULL,
-  `provider_number` varchar(255) DEFAULT NULL,
-  `group_npi` int(11) DEFAULT NULL,
-  `medicare_number` varchar(255) DEFAULT NULL,
-  `medicare_tpi_number` varchar(255) DEFAULT NULL,
-  `ecfmg_number` varchar(255) DEFAULT NULL,
-  `ecfmg_issue_date` datetime DEFAULT NULL,
-  `social_security` int(11) NOT NULL,
   `created_by_User_id` int(11) DEFAULT NULL,
   `modified_by_User_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -896,7 +1211,7 @@ CREATE TABLE `States` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1048,4 +1363,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-25  8:46:46
+-- Dump completed on 2013-06-29 16:56:47

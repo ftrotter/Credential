@@ -25,6 +25,11 @@ DROP TABLE IF EXISTS `CredentialOrganizations`;
 CREATE TABLE `CredentialOrganizations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
+  `Address_id` int(11) NOT NULL,
+  `Phone_id` int(11) NOT NULL,
+  `Fax_Phone_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `credentialing_contact` varchar(255) NOT NULL,
   `created_by_User_id` int(11) DEFAULT NULL,
   `modified_by_User_id` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -39,7 +44,7 @@ CREATE TABLE `CredentialOrganizations` (
 
 LOCK TABLES `CredentialOrganizations` WRITE;
 /*!40000 ALTER TABLE `CredentialOrganizations` DISABLE KEYS */;
-INSERT INTO `CredentialOrganizations` VALUES (1,'MRSB',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'HERITAGE',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `CredentialOrganizations` VALUES (1,'MRSB',0,0,0,'','',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'HERITAGE',0,0,0,'','',1,1,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `CredentialOrganizations` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-25  8:47:13
+-- Dump completed on 2013-06-29 16:56:47
