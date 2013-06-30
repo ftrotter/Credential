@@ -20,7 +20,13 @@
     </style>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src='http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'></script>
+    <script language='javascript' src='/js/jquery.tablesorter.min.js' type='text/javascript'></script>
+    <script type='text/javascript' src='/js/util.js'></script>
 <script type="text/javascript" src="http://www.alpacajs.org/js/alpaca.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+    <link href='/css/tablesorter.css' rel='stylesheet' type='text/css'>
 
 <link type="text/css" href="http://alpacajs.org/css/alpaca-bootstrap.css" rel="stylesheet"/>
 
