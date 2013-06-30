@@ -12,6 +12,7 @@
 */
 
 
+Route::get("doctors/expiring", "DoctorsController@get_expiring");
 Route::get("doctors/list", "DoctorsController@get_list");
 
 Route::get("doctors/dash", "DoctorsController@get_dash");

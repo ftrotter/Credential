@@ -5,6 +5,101 @@ class DoctorsController extends BaseController {
 
 	public $restful = true;
 
+
+	public function get_expiring(){
+	
+
+	$datetime = strtotime("+2 years");
+	$mysqldate = date("m/d/y g:i A", $datetime);
+
+	$mysqldate = "2013-09-05 00:00:00";
+		$sql = "
+(SELECT 
+`id`,
+`Provider_id`,
+`name`,
+`expire_date`,
+'Identifier' as data_type
+FROM  `Identifiers` 
+WHERE  `expire_date` <  '$mysqldate'
+
+) 
+
+UNION ALL
+
+(
+SELECT  
+`id`,
+`Provider_id` ,  
+`coverage_name` AS name,  
+`expire_date` ,  'Insurancecoverage' as data_type
+FROM  `Insurancecoverages` 
+WHERE  `expire_date` <  '$mysqldate'
+
+)
+
+UNION ALL
+
+(
+SELECT  
+`id`,
+`Provider_id` ,  
+`select_name` AS name,  
+`expire_date` , 
+ 'Document' as data_type
+FROM  `Documents` 
+WHERE  `expire_date` <  '$mysqldate'
+)
+
+UNION ALL 
+
+(
+SELECT  
+`id`,
+`Provider_id` ,  
+`name`,  
+`expire_date` , 
+ 'ProviderLicense' as data_type
+FROM  `ProviderLicenses` 
+WHERE  `expire_date` <  '$mysqldate'
+)
+
+ORDER BY `expire_date`
+
+";
+	
+
+		$results = DB::select($sql);
+
+		$result_array = array();
+		foreach($results as $result_obj){
+			$tmp = array();
+			$tmp['id'] = $result_obj->id;
+			$tmp['Provider_id'] = $result_obj->Provider_id;
+			$tmp['name'] = $result_obj->name;
+			$tmp['data_type'] = $result_obj->data_type;
+			$tmp['expire_date'] = $result_obj->expire_date;
+			$result_array[] = $tmp;
+		}
+		
+
+		$this->view_data['results'] = $result_array;
+
+
+		return($this->_render("expiring"));
+
+
+		//Things that expire:
+		//ProviderLicense
+		//Document
+		//InsuranceCoverage
+		//Identifier
+
+			
+
+
+	}
+
 	public function get_index()
 	{	
 
