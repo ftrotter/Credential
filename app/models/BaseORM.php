@@ -94,7 +94,7 @@
 			}
 
 			if(!isset($the_field)){
-				echo "Error, each object must have at least one _name field, here is what I got..<br><pre>";
+				echo "Error, each object must have at least one _name field, but $this->table does not have one.  here is what I got..<br><pre>";
 				var_export($fields);
 				echo "</pre>";
 				exit();
