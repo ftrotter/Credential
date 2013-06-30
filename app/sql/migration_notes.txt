@@ -6,22 +6,18 @@ ethniccodes -> Ethniccodes is manually migrated
 exportbatches not migrated
 exportrecords not migrated
 facilities data is empty on the old data set... not migrating...
-
 hospital migration requires a script...
 hospital -> Hospital
 	-> Address
        -> Phone
 run hospital_migration.php
-
 languagecodes -> Languages is manually migrated
 licensecodes -> Licensecodes is manually migrated
-
 medicalboard migration requires a script
 medicalboard -> Medicalboards
 	-> Address
 	-> Phone
 	-> Phone again as fax..
-
 medicalschool -> EducationInstitutions manually migrated. Address and phone not migrated (because they are missing in any case...)
 networkcodes -> Networks manually migrated
 notecatagories -> Notetypes manually migrated
@@ -31,17 +27,65 @@ phonecovereagecodes -> Phonecoveragecodes mangually migrated
 privileges -> Privileges manually migrated
 professioncodes -> Professioncodes manually migrated..
 servicecodes -> Servicecodes manually migrated...
+provider -> new script to pull out addresses, but keep the ids
+provider agents -> the agent id does not link to anything
+providercarrier-> manual migration
+providerfiles-> its empty and it goes away in favor of the new documents section...
+providermedicaids -> its empty and we have no idea what it is for. It goes away.
+providercertificates is a mess 
+		instead move to a system that has ids that expire at particular times...
+providercredentials is the core table that organizes who is credentialing for who and when it has to happen again...
+	but because the relationship is also embeded in the practice... we will not do an import...
+	But this is how we will track the expiration of the whole credential process...
+
+NOTDONE
+
+
+providerpractices is another nightmare.. it is so incredibly backwards		
+	It is patently, frustratingly obvious that provide practice needs to be many to many with providers...
+	Not sure how much more obvious this could be.. design decisions like this 
+	(done) Need new object Billing Company... 
+	(done)Billing company has address, phone, fax
+	(done)CredentialOrganization needs to be expanded
+	practice_0_total_num and practice_0_current_num should be calculated by the generator...
+	(done)has a fax
+	(done)has an address
+	(done)has a phone
+
+	
+
+
+providereducations has no links to specialty codes
+		It needs to create education institutions...
+		with addresses
+		
+providerhospitals is not normalized.. what is the point of having a seperate hospital table...
+
+providerinsurance needs to be split into a seperate insurance company file...
+		then have a normalized relationship with that...
+		that "normalized relationship should include the amounts and the policy numbers.."
+		
+providerlicense code needs to move to using state id... 
+		have to write code...
+
+
+providerspecialties needs to be migrated with code
+		because this fucking database was normalized by a sadist or a moron. Maybe both. 
+
+providernetworks needs to be coded
+
+providernotes needs to be coded
 
 
 
 
 
-provideragents this is a many to many on providers to agents, but there is no agent table that I can find..
 
+Primary care status is all over the place.
 
-
-
-
+TODO why are the provider drop downs in Identifier not working??
 
 ALTER TABLE `Ethniccodes`  
 ADD `created_by_User_id` INT(11) NOT NULL,  ADD `modified_by_User_id` INT(11) NOT NULL,  ADD `created_at` DATETIME NOT NULL,  ADD `updated_at` DATETIME NOT NULL 
+
+
