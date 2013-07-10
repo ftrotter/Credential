@@ -12,6 +12,8 @@
 */
 
 
+Route::get("doctors/populate", "DoctorsController@get_populate");
+Route::post("doctors/populate", "DoctorsController@post_populate");
 Route::get("doctors/expiring", "DoctorsController@get_expiring");
 Route::get("doctors/list", "DoctorsController@get_list");
 
