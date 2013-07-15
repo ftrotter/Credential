@@ -5,7 +5,7 @@
 			<a href='/doctors/?npi={$npi}'>Edit {$npi}</a> 
 		</li>
 		<li>
-			<a href='/ORM/Document/new?npi={$npi}'>Add document for {$npi}</a> 
+			<a href='/documents/new?provider_id={$npi}'>Add document for {$npi}</a> 
 		</li>
 		</ul>
 		<ul>

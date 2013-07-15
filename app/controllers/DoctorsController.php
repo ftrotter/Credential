@@ -6,6 +6,14 @@ class DoctorsController extends BaseController {
 	public $restful = true;
 
 
+	public function get_populate(){
+
+
+	}
+
+	public function post_populate(){
+	}
+
 	public function get_expiring(){
 	
 

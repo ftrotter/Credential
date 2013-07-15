@@ -24,6 +24,8 @@ Route::get("doctors", "DoctorsController@get_index");
 Route::post("doctors/index", "DoctorsController@post_index");
 Route::post("doctors", "DoctorsController@post_index");
 
+Route::get("documents/new", "DocumentsController@action_docform");
+Route::post("documents/notify", "DocumentsController@action_notify");
 
 Route::get('/ORM/{object_name}/new',function($object_name){
 
