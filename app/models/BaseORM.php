@@ -150,11 +150,13 @@
 			}
 
 			if(!isset($the_field)){
+			/*	
 				echo "Error, each object must have at least one _name field, but $this->table does not have one.  here is what I got..<br><pre>";
 				var_export($fields);
 				echo "</pre>";
 				exit();
-
+			*/
+			return false;
 			}
 
 			if(!is_null($best_field)){
@@ -167,19 +169,31 @@
 
 		function getSelectArray(){
 
-			$my_name_field = $this->getMyNameField();
-
 			//OK lets load every instance of this class
 			$this_class_name = get_class($this);
 			$all_of_us = $this_class_name::all();
 
-			$return_array = array();
-			//and loop over them creating an array of ids => select name...
-			foreach($all_of_us as $one_of_us){
-				$return_array[$one_of_us->id] = $one_of_us->$my_name_field;
-			}
+			$my_name_field = $this->getMyNameField();
+			if($my_name_field){ //this is the simple case...
+			
+				$return_array = array();
+				//and loop over them creating an array of ids => select name...
+				foreach($all_of_us as $one_of_us){
+					$return_array[$one_of_us->id] = $one_of_us->$my_name_field;
+				}
 
-			return($return_array);
+				return($return_array);
+			}else{
+				//this shoudld be a join table
+				//to qualify as a join table...
+				//this table has to have ids that all link
+				//to other tables with names...
+			
+			//	var_export($all_of_us->toArray());
+				echo "Dynamic selection of join tables is not supported";
+				exit();
+	
+			}
 		}
 
 
@@ -209,16 +223,38 @@
 		$fields = $this->get_fields();
 		$table_data = array();
 		foreach($fields as $field_name){
+			//I cannot remember why I chose to not be case sensitive here
+			//but it fucks everything up... 
 			$lower_case_field_name = strtolower($field_name);
 			if(isset($table_saved_data[$lower_case_field_name])){
 				$table_data[$field_name] = $table_saved_data[$lower_case_field_name]; 
 			}else{
 				$table_data[$field_name] = null; 
 			}
+
+			if(isset($table_saved_data[$field_name])){
+				$table_data[$field_name] = $table_saved_data[$field_name]; 
+			}else{
+				$table_data[$field_name] = null; 
+			}
+
+			
+
+			
 		}
 		
-		
+		$hidden_values = array(
+				'id',
+				strtolower('createdAt'),
+				strtolower('created_at'),
+				strtolower('updatedAt'),	
+				strtolower('updated_at'),	
+				strtolower('created_by_User_id'),
+				strtolower('modified_by_User_id'),
+		);
 
+		
+		$data_check = array();
 
 		foreach($table_data as $field_name => $current_value){
 
@@ -234,16 +270,6 @@
 
 			$label_array = explode('_',$field_name);
 			$label = ucwords(implode(' ',$label_array));
-
-			$hidden_values = array(
-					'id',
-					strtolower('createdAt'),
-					strtolower('created_at'),
-					strtolower('updatedAt'),	
-					strtolower('updated_at'),	
-					strtolower('created_by_User_id'),
-					strtolower('modified_by_User_id'),
-			);
 
 
 			if(in_array(strtolower($field_name),$hidden_values)){
@@ -261,6 +287,7 @@
 
 			if(BaseORM::detect_is($field_name)){ //this is a boolean and should have a checkbox 
 				$type = 'boolean'; 
+
 
 				$extra_opt = array("rightLabel"=> "$label?");
 				$label_array = explode(' ',$label);
@@ -291,7 +318,7 @@
 				$format = 'date';
 				
 				if(is_null($current_value)){
-					$data_array[$field_name] = '01/01/01';
+					$data_array[$field_name] = '01/01/2001';
 				}else{
 					$this_date = strtotime($current_value);
 					$data_array[$field_name] = date('m/d/Y',$this_date);	
@@ -302,6 +329,7 @@
 	          //like create_by_User_id etc
 		      if(BaseORM::detect_id($field_name) && !$hidden){
 				//lets loose the "ID" for the label..
+				$data_check[$field_name] = $current_value;
 				array_pop($label_array);
 				$label = ucwords(implode(' ',$label_array));
 
@@ -387,6 +415,8 @@
 				),
 
 			);
+
+		//var_export($data_check);
 		return($form_array);
 
 

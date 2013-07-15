@@ -154,6 +154,9 @@ Route::get('/ORM/{object_name}',function($object_name){
                 foreach($object_name::all() as $this_one_object){
                         if(!isset($name_field)){ //only runs on the first pass
                                 $name_field = $this_one_object->getMyNameField();
+				if(!$name_field){
+					$name_field = 'id';
+				}
                         }
 
                         $this_id = $this_one_object->id;
