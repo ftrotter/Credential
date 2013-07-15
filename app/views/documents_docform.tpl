@@ -61,3 +61,17 @@
   </div>
 </form>
 </div>
+
+<script type="text/javascript" src="//assets.transloadit.com/js/jquery.transloadit2-latest.js"></script>
+<script type="text/javascript">
+   // We call .transloadit() after the DOM is initialized:
+   $(document).ready(function() {
+     $('#DocumentForm').transloadit({
+        wait: true
+     });
+
+
+   });
+</script>
+
+
