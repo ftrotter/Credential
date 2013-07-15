@@ -27,7 +27,14 @@ Route::post("doctors", "DoctorsController@post_index");
 Route::get("documents/new", "DocumentsController@action_docform");
 Route::post("documents/notify", "DocumentsController@action_notify");
 
+
+Route::get("report/list", "ReportsController@index");
+Route::get("/REPORT/{object_name}", "ReportsController@report");
+Route::get("/REPORTCSV/{object_name}", "ReportsController@csv");
+
 Route::get('/ORM/{object_name}/new',function($object_name){
+
+
 
         if(class_exists($object_name)){
                 $view_data = standard_view_data();
