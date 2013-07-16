@@ -26,8 +26,9 @@ class ReportsController extends BaseController {
 			$stuff = get_object_vars($this_table);
 			$this_table_name = array_pop($stuff);
 			if(strpos($this_table_name,'view_') !== false){
-				$views[] = $this_table_name;
-
+				if(strpos($this_table_name,'_report') !== false){
+					$views[] = $this_table_name;
+				}
 			}
 		}
 
