@@ -10,4 +10,5 @@ For the SQL side, it is important to let Maria/MySQL handle the query optimizati
 
  optimizer_search_depth=0
 
-In /etc/my.conf will make your life easier
+In /etc/my.conf will make your life easier. 
+More <a href='http://jeremythomerson.com/2013/06/28/debugging-mysql-slow-queries-with-many-joins/'>info</a>
