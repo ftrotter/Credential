@@ -19,7 +19,7 @@ SELECT
  Providers.comment AS Providers_comment,
  Providers.signature_date AS Providers_signature_date,
  ProviderTypes.name as type_of_professional,
- Practices.select_name AS Practices_select_name,
+ Practices.select_name AS Practices_name,
  Practices.IRS_name AS Practices_name_IRS,
  Practices.24hour_coverage_answering_service_is AS Practices_24hour_coverage_answering_service_is,
  Practices.24hour_coverage_none_is AS Practices_24hour_coverage_none_is,
@@ -150,88 +150,67 @@ SELECT
  Practice_Fax_Phones.phone AS Practices_fax,
  Practice_Phones.phone AS Practices_office_phone,
  Home_Phones.phone AS phone_home,
- CredentialOrganizations.name AS CredentialOrganizations_name,
- CredentialOrganizations.email AS CredentialOrganizations_email,
- CredentialOrganizations.credentialing_contact,
+
+ CredentialOrganizations.name AS Practices_credentialing_contact,
+ CredentialOrganizations.email AS Practices_credentialing_contact_email,
+ CredentialOrganizations.credentialing_contact as Practices_credentialing_contact,
+ CredentialOrganizationsPhones.phone AS Practices_credentialing_contact_phone,
+ CredentialOrganizationsFax.phone  AS Practices_credentialing_contact_fax,
+ CredentialOrganizationsAddresss.line1  AS Practices_credentialing_contact_line1,
+ CredentialOrganizationsStates.state_abbr AS Practices_credentialing_contact_state,
+ CredentialOrganizationsCitys.name AS Practices_credentialing_contact_city,
+
+ Billingcompanys.name AS Practices_billing_company_name,
+ Billingcompanys.email AS Practices_billing_company__contact_email,
+ Billingcompanys.billing_representative as Practices_billing_company_billing_representative,
+ Billingcompanys.check_payable_to as Practices_billing_company_check_payable_to,
+ Billingcompanys.is_bill_electronic as Practices_billing_company_bill_electronic_is,
+ Billingcompanys.billing_department_if_hospital as Practices_if_hospital_based_department_name,
+ BillingcompanyPhones.phone AS Practices_billing_company_contact_phone,
+ BillingcompanyFax.phone  AS Practices_billing_company_contact_fax,
+ BillingcompanyAddresss.line1  AS Practices_billing_company_contact_line1,
+ BillingcompanyStates.state_abbr AS Practices_billing_company_contact_state,
+ BillingcompanyCitys.name AS Practices_billing_company_contact_city,
+
  Servicecodes.name AS Servicecodes_name,
- non_Providers_0.npi AS non_Providers_0_npi,
- non_Providers_0.last_name AS non_Providers_0_last_name,
- non_Providers_0.first_name AS non_Providers_0_first_name,
- non_Providers_0.middle_name AS non_Providers_0_middle_name,
- non_Providers_0.suffix AS non_Providers_0_suffix,
- non_Providers_0.maiden_name AS non_Providers_0_maiden_name,
- non_Providers_0.source_name AS non_Providers_0_source_name,
- non_Providers_0.birth_date AS non_Providers_0_birth_date,
- non_Providers_0.is_pcp AS non_Providers_0_is_pcp,
- non_Providers_0.is_specialist AS non_Providers_0_is_specialist,
- non_Providers_0.Corr_email AS non_Providers_0_Corr_email,
- non_Providers_0.comment AS non_Providers_0_comment,
- non_Providers_0.signature_date AS non_Providers_0_signature_date,
- non_Providers_1.npi AS non_Providers_1_npi,
- non_Providers_1.last_name AS non_Providers_1_last_name,
- non_Providers_1.first_name AS non_Providers_1_first_name,
- non_Providers_1.middle_name AS non_Providers_1_middle_name,
- non_Providers_1.suffix AS non_Providers_1_suffix,
- non_Providers_1.maiden_name AS non_Providers_1_maiden_name,
- non_Providers_1.source_name AS non_Providers_1_source_name,
- non_Providers_1.birth_date AS non_Providers_1_birth_date,
- non_Providers_1.is_pcp AS non_Providers_1_is_pcp,
- non_Providers_1.is_specialist AS non_Providers_1_is_specialist,
- non_Providers_1.Corr_email AS non_Providers_1_Corr_email,
- non_Providers_1.comment AS non_Providers_1_comment,
- non_Providers_1.signature_date AS non_Providers_1_signature_date,
- non_Providers_2.npi AS non_Providers_2_npi,
- non_Providers_2.last_name AS non_Providers_2_last_name,
- non_Providers_2.first_name AS non_Providers_2_first_name,
- non_Providers_2.middle_name AS non_Providers_2_middle_name,
- non_Providers_2.suffix AS non_Providers_2_suffix,
- non_Providers_2.maiden_name AS non_Providers_2_maiden_name,
- non_Providers_2.source_name AS non_Providers_2_source_name,
- non_Providers_2.birth_date AS non_Providers_2_birth_date,
- non_Providers_2.is_pcp AS non_Providers_2_is_pcp,
- non_Providers_2.is_specialist AS non_Providers_2_is_specialist,
- non_Providers_2.Corr_email AS non_Providers_2_Corr_email,
- non_Providers_2.comment AS non_Providers_2_comment,
- non_Providers_2.signature_date AS non_Providers_2_signature_date,
- non_Providers_3.npi AS non_Providers_3_npi,
- non_Providers_3.last_name AS non_Providers_3_last_name,
- non_Providers_3.first_name AS non_Providers_3_first_name,
- non_Providers_3.middle_name AS non_Providers_3_middle_name,
- non_Providers_3.suffix AS non_Providers_3_suffix,
- non_Providers_3.maiden_name AS non_Providers_3_maiden_name,
- non_Providers_3.source_name AS non_Providers_3_source_name,
- non_Providers_3.birth_date AS non_Providers_3_birth_date,
- non_Providers_3.is_pcp AS non_Providers_3_is_pcp,
- non_Providers_3.is_specialist AS non_Providers_3_is_specialist,
- non_Providers_3.Corr_email AS non_Providers_3_Corr_email,
- non_Providers_3.comment AS non_Providers_3_comment,
- non_Providers_3.signature_date AS non_Providers_3_signature_date,
- non_Providers_4.npi AS non_Providers_4_npi,
- non_Providers_4.last_name AS non_Providers_4_last_name,
- non_Providers_4.first_name AS non_Providers_4_first_name,
- non_Providers_4.middle_name AS non_Providers_4_middle_name,
- non_Providers_4.suffix AS non_Providers_4_suffix,
- non_Providers_4.maiden_name AS non_Providers_4_maiden_name,
- non_Providers_4.source_name AS non_Providers_4_source_name,
- non_Providers_4.birth_date AS non_Providers_4_birth_date,
- non_Providers_4.is_pcp AS non_Providers_4_is_pcp,
- non_Providers_4.is_specialist AS non_Providers_4_is_specialist,
- non_Providers_4.Corr_email AS non_Providers_4_Corr_email,
- non_Providers_4.comment AS non_Providers_4_comment,
- non_Providers_4.signature_date AS non_Providers_4_signature_date,
- non_Providers_5.npi AS non_Providers_5_npi,
- non_Providers_5.last_name AS non_Providers_5_last_name,
- non_Providers_5.first_name AS non_Providers_5_first_name,
- non_Providers_5.middle_name AS non_Providers_5_middle_name,
- non_Providers_5.suffix AS non_Providers_5_suffix,
- non_Providers_5.maiden_name AS non_Providers_5_maiden_name,
- non_Providers_5.source_name AS non_Providers_5_source_name,
- non_Providers_5.birth_date AS non_Providers_5_birth_date,
- non_Providers_5.is_pcp AS non_Providers_5_is_pcp,
- non_Providers_5.is_specialist AS non_Providers_5_is_specialist,
- non_Providers_5.Corr_email AS non_Providers_5_Corr_email,
- non_Providers_5.comment AS non_Providers_5_comment,
- non_Providers_5.signature_date AS non_Providers_5_signature_date,
+
+
+ non_Providers_0.name AS Practices_non_physician_provider_name_0,
+ non_Providers_0.name AS Practices_non_physician_provider_0_designation,
+ non_Providers_0.name AS Practices_non_physician_provider_0_state,
+ non_Providers_0.name AS Practices_non_physician_provider_0_license_number,
+ non_Providers_0_States.name AS Practices_non_physician_provider_0_state,
+
+ non_Providers_1.name AS Practices_non_physician_provider_name_1,
+ non_Providers_1.name AS Practices_non_physician_provider_1_designation,
+ non_Providers_1.name AS Practices_non_physician_provider_1_state,
+ non_Providers_1.name AS Practices_non_physician_provider_1_license_number,
+ non_Providers_1_States.name AS Practices_non_physician_provider_1_state,
+
+ non_Providers_2.name AS Practices_non_physician_provider_name_2,
+ non_Providers_2.name AS Practices_non_physician_provider_2_designation,
+ non_Providers_2.name AS Practices_non_physician_provider_2_state,
+ non_Providers_2.name AS Practices_non_physician_provider_2_license_number,
+ non_Providers_2_States.name AS Practices_non_physician_provider_2_state,
+
+ non_Providers_3.name AS Practices_non_physician_provider_name_3,
+ non_Providers_3.name AS Practices_non_physician_provider_3_designation,
+ non_Providers_3.name AS Practices_non_physician_provider_3_state,
+ non_Providers_3.name AS Practices_non_physician_provider_3_license_number,
+ non_Providers_3_States.name AS Practices_non_physician_provider_3_state,
+
+ non_Providers_4.name AS Practices_non_physician_provider_name_4,
+ non_Providers_4.name AS Practices_non_physician_provider_4_designation,
+ non_Providers_4.name AS Practices_non_physician_provider_4_state,
+ non_Providers_4.name AS Practices_non_physician_provider_4_license_number,
+ non_Providers_4_States.name AS Practices_non_physician_provider_4_state,
+
+ non_Providers_5.name AS Practices_non_physician_provider_name_5,
+ non_Providers_5.name AS Practices_non_physician_provider_5_designation,
+ non_Providers_5.name AS Practices_non_physician_provider_5_state,
+ non_Providers_5.name AS Practices_non_physician_provider_5_license_number,
+ non_Providers_5_States.name AS Practices_non_physician_provider_5_state,
+
  Provider_0_Languages.abbreviation AS Provider_0_Languages_abbreviation,
  Provider_0_Languages.name AS Provider_0_Languages_name,
  Provider_1_Languages.abbreviation AS Provider_1_Languages_abbreviation,
@@ -273,14 +252,39 @@ LEFT JOIN Phones AS Corr_Fax_Phones ON Corr_Fax_Phone_id = Corr_Fax_Phones.id
 LEFT JOIN Phones AS Home_Phones ON Home_Phone_id = Home_Phones.id
 LEFT JOIN Phones AS Practice_Fax_Phones ON Practices.Fax_Phone_id = Practice_Fax_Phones.id
 LEFT JOIN Phones AS Practice_Phones ON Practices.Phone_id = Practice_Phones.id
+
 LEFT JOIN CredentialOrganizations ON CredentialOrganization_id  = CredentialOrganizations.id
+LEFT JOIN Phones AS CredentialOrganizationsPhones ON CredentialOrganizations.Phone_id = CredentialOrganizationsPhones.id
+LEFT JOIN Phones AS CredentialOrganizationsFax ON CredentialOrganizations.Fax_Phone_id = CredentialOrganizationsFax.id
+LEFT JOIN Addresss AS CredentialOrganizationsAddresss ON CredentialOrganizations.Address_id = CredentialOrganizationsAddresss.id
+LEFT JOIN States AS CredentialOrganizationsStates ON CredentialOrganizationsAddresss.State_id = CredentialOrganizationsStates.id
+LEFT JOIN Citys AS CredentialOrganizationsCitys ON CredentialOrganizationsAddresss.City_id = CredentialOrganizationsCitys.id
+
+LEFT JOIN Billingcompanys ON Billingcompany_id  = Billingcompanys.id
+LEFT JOIN Phones AS BillingcompanyPhones ON Billingcompanys.Phone_id = BillingcompanyPhones.id
+LEFT JOIN Phones AS BillingcompanyFax ON Billingcompanys.Fax_Phone_id = BillingcompanyFax.id
+LEFT JOIN Addresss AS BillingcompanyAddresss ON Billingcompanys.Address_id = BillingcompanyAddresss.id
+LEFT JOIN States AS BillingcompanyStates ON BillingcompanyAddresss.State_id = BillingcompanyStates.id
+LEFT JOIN Citys AS BillingcompanyCitys ON BillingcompanyAddresss.City_id = BillingcompanyCitys.id
+
+
 LEFT JOIN Servicecodes ON Servicecodes.id = Servicecode_id
-LEFT JOIN Providers AS non_Providers_0 ON non_physician_0_Provider_id = non_Providers_0.id
-LEFT JOIN Providers AS non_Providers_1 ON non_physician_1_Provider_id = non_Providers_1.id
-LEFT JOIN Providers AS non_Providers_2 ON non_physician_2_Provider_id = non_Providers_2.id
-LEFT JOIN Providers AS non_Providers_3 ON non_physician_3_Provider_id = non_Providers_3.id
-LEFT JOIN Providers AS non_Providers_4 ON non_physician_4_Provider_id = non_Providers_4.id
-LEFT JOIN Providers AS non_Providers_5 ON non_physician_5_Provider_id = non_Providers_5.id
+
+
+LEFT JOIN Nonphysicians AS non_Providers_0 ON a_0_Nonphysician_id = non_Providers_0.id
+LEFT JOIN Nonphysicians AS non_Providers_1 ON a_1_Nonphysician_id = non_Providers_1.id
+LEFT JOIN Nonphysicians AS non_Providers_2 ON a_2_Nonphysician_id = non_Providers_2.id
+LEFT JOIN Nonphysicians AS non_Providers_3 ON a_3_Nonphysician_id = non_Providers_3.id
+LEFT JOIN Nonphysicians AS non_Providers_4 ON a_4_Nonphysician_id = non_Providers_4.id
+LEFT JOIN Nonphysicians AS non_Providers_5 ON a_5_Nonphysician_id = non_Providers_5.id
+
+LEFT JOIN States AS  non_Providers_0_States ON  non_Providers_0.State_id = non_Providers_0_States.id
+LEFT JOIN States AS  non_Providers_1_States ON  non_Providers_1.State_id = non_Providers_1_States.id
+LEFT JOIN States AS  non_Providers_2_States ON  non_Providers_2.State_id = non_Providers_2_States.id
+LEFT JOIN States AS  non_Providers_3_States ON  non_Providers_3.State_id = non_Providers_3_States.id
+LEFT JOIN States AS  non_Providers_4_States ON  non_Providers_4.State_id = non_Providers_4_States.id
+LEFT JOIN States AS  non_Providers_5_States ON  non_Providers_5.State_id = non_Providers_5_States.id
+
 LEFT JOIN Languages AS Provider_0_Languages ON Provider_0_Language_id = Provider_0_Languages.id
 LEFT JOIN Languages AS Provider_1_Languages ON Provider_1_Language_id = Provider_1_Languages.id
 LEFT JOIN Languages AS Provider_2_Languages ON Provider_2_Language_id = Provider_2_Languages.id
