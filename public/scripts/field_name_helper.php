@@ -53,9 +53,10 @@ LEFT JOIN Languages AS Staff_2_Languages ON Staff_2_Language_id = Staff_2_Langua
 		$fields = $_POST['fields'];
 		echo "<pre>";
 		echo "\nSELECT \n";
-	
+		$comma = "\n";	
 		foreach($fields as $a_field){
-			echo $a_field ."\n";
+			echo "$comma $a_field";
+			$comma = ",\n";
 		}
 		echo "\n$core_sql\n";
 		echo "</pre>";
@@ -129,6 +130,8 @@ $core_sql
 				}else{
 					$field_text = $val->table .".".$val->name;
 				}
+				//lets just always use "AS"...
+				$field_text = $val->table .".".$val->name ." AS ".$val->table. "_".$val->name;
 	
 				$html .= "<li> <input 	type='checkbox' 
 							name='fields[]' 
