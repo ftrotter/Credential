@@ -1,0 +1,290 @@
+SELECT 
+ Providers.npi AS Providers_npi,
+ Providers.last_name AS name_last,
+ Providers.first_name AS name_first,
+ Providers.middle_name AS name_middle,
+ Providers.suffix AS name_suffix,
+ Providers.maiden_name AS name_maiden,
+ Providers.maiden_name_range_start_date,
+ Providers.maiden_name_range_end_date,
+ Providers.other_name AS name_other,
+ Providers.name_other_range_start_date,
+ Providers.name_other_range_end_date,
+ Providers.source_name AS name_other,
+ Providers.birth_date AS citizen_birth_date,
+ Providers.is_pcp AS Providers_is_pcp,
+ Providers.is_specialist AS Providers_is_specialist,
+ Providers.Corr_email AS correspondence_address_email,
+ Providers.comment AS Providers_comment,
+ Providers.signature_date AS Providers_signature_date,
+ ProviderTypes.name as type_of_professional,
+ Practices.select_name AS Practices_name,
+ Practices.IRS_name AS Practices_name_IRS,
+ Practices.24hour_coverage_answering_service_is AS Practices_24hour_coverage_answering_service_is,
+ Practices.24hour_coverage_none_is AS Practices_24hour_coverage_none_is,
+ Practices.24hour_coverage_voicemail_service_is AS Practices_24hour_coverage_voicemail_service_is,
+ Practices.24hour_coverage_voicemail_service_other_is AS Practices_24hour_coverage_voicemail_service_other_is,
+ Practices.accepts_all_new_patients_is AS Practices_accepts_all_new_patients_is,
+ Practices.accepts_existing_patients_payor_change_is AS Practices_accepts_existing_patients_payor_change_is,
+ Practices.accepts_new_medicaid_patients_is AS Practices_accepts_new_medicaid_patients_is,
+ Practices.accepts_new_medicare_patients_is AS Practices_accepts_new_medicare_patients_is,
+ Practices.accepts_new_patients_referral_is AS Practices_accepts_new_patients_referral_is,
+ Practices.accepts_vary_by_plan_new_patients_explanation AS Practices_accepts_vary_by_plan_new_patients_explanation,
+ Practices.additional_office_procedures AS Practices_additional_office_procedures,
+ Practices.anesthesia_admin_classes AS Practices_anesthesia_admin_classes,
+ Practices.current_practice_location_is AS Practices_current_practice_location_is,
+ Practices.address_is_primary AS Practices_address_is_primary,
+ Practices.email AS Practices_email,
+ Practices.group_name_corresponding_tax_number AS Practices_group_name_corresponding_tax_id,
+ Practices.group_number_corresponding_tax_number AS Practices_group_number_corresponding_tax_id,
+ Practices.handicapped_access_building_is AS Practices_handicapped_access_building_is,
+ Practices.handicapped_access_other AS Practices_handicapped_access_other,
+ Practices.handicapped_access_parking_is AS Practices_handicapped_access_parking_is,
+ Practices.handicapped_access_restroom_is AS Practices_handicapped_access_restroom_is,
+ Practices.if_hospital_based_department_name AS Practices_if_hospital_based_department_name,
+ Practices.if_no_current_location_expected_start_date AS Practices_if_no_current_location_expected_start_date,
+ Practices.is_ada_accessibility AS Practices_is_ada_accessibility,
+ Practices.is_age_appropriate_immunizations_services AS Practices_is_age_appropriate_immunizations_services,
+ Practices.is_allergy_injections_services AS Practices_is_allergy_injections_services,
+ Practices.is_allergy_skin_tests_services AS Practices_is_allergy_skin_tests_services,
+ Practices.is_anesthesia_admin AS Practices_is_anesthesia_admin,
+ Practices.is_asthma_treatments_services AS Practices_is_asthma_treatments_services,
+ Practices.is_cardiac_stress_test_services AS Practices_is_cardiac_stress_test_services,
+ Practices.is_care_minor_lacerations_services AS Practices_is_care_minor_lacerations_services,
+ Practices.is_childcare_services AS Practices_is_childcare_services,
+ Practices.is_drawing_blood_services AS Practices_is_drawing_blood_services,
+ Practices.is_ekg AS Practices_is_ekg,
+ Practices.is_flexible_sigmoidoscopy_services AS Practices_is_flexible_sigmoidoscopy_services,
+ Practices.is_interpreters_avail AS Practices_is_interpreters_avail,
+ Practices.is_iv_hydration_treatments_services AS Practices_is_iv_hydration_treatments_services,
+ Practices.is_lab_services_following AS Practices_is_lab_services_following,
+ Practices.is_lab_services_list_certs AS Practices_is_lab_services_list_certs,
+ Practices.is_minority_business AS Practices_is_minority_business,
+ Practices.is_osteopathic_manipulations_services AS Practices_is_osteopathic_manipulations_services,
+ Practices.is_other_services AS Practices_is_other_services,
+ Practices.is_physical_therapies_services AS Practices_is_physical_therapies_services,
+ Practices.is_provider_cert_adv_cardiac_life_support AS Practices_is_provider_cert_adv_cardiac_life_support,
+ Practices.is_provider_cert_adv_neonatal_life_support AS Practices_is_provider_cert_adv_neonatal_life_support,
+ Practices.is_provider_cert_adv_trauma_life_support AS Practices_is_provider_cert_adv_trauma_life_support,
+ Practices.is_provider_cert_advanced_ob_life_support AS Practices_is_provider_cert_advanced_ob_life_support,
+ Practices.is_provider_cert_basic_life_support AS Practices_is_provider_cert_basic_life_support,
+ Practices.is_provider_cert_cardio_pulmonary_resuscitation AS Practices_is_provider_cert_cardio_pulmonary_resuscitation,
+ Practices.is_provider_cert_other AS Practices_is_provider_cert_other,
+ Practices.is_provider_cert_pediatric_adv_life_support AS Practices_is_provider_cert_pediatric_adv_life_support,
+ Practices.is_pulmonary_function_tests_services AS Practices_is_pulmonary_function_tests_services,
+ Practices.is_radiology_services AS Practices_is_radiology_services,
+ Practices.is_routine_office_gynecology_services AS Practices_is_routine_office_gynecology_services,
+ Practices.is_services_ASL_disabled AS Practices_is_services_ASL_disabled,
+ Practices.is_services_TTY_disabled AS Practices_is_services_TTY_disabled,
+ Practices.is_services_mental_physical_disabled AS Practices_is_services_mental_physical_disabled,
+ Practices.is_services_other_disabled AS Practices_is_services_other_disabled,
+ Practices.is_staff_cert_adv_cardiac_life_support AS Practices_is_staff_cert_adv_cardiac_life_support,
+ Practices.is_staff_cert_adv_neonatal_life_support AS Practices_is_staff_cert_adv_neonatal_life_support,
+ Practices.is_staff_cert_adv_trauma_life_support AS Practices_is_staff_cert_adv_trauma_life_support,
+ Practices.is_staff_cert_advanced_ob_life_support AS Practices_is_staff_cert_advanced_ob_life_support,
+ Practices.is_staff_cert_basic_life_support AS Practices_is_staff_cert_basic_life_support,
+ Practices.is_staff_cert_cardio_pulmonary_resuscitation AS Practices_is_staff_cert_cardio_pulmonary_resuscitation,
+ Practices.is_staff_cert_other AS Practices_is_staff_cert_other,
+ Practices.is_staff_cert_pediatric_adv_life_support AS Practices_is_staff_cert_pediatric_adv_life_support,
+ Practices.is_trans_bus_accessible AS Practices_is_trans_bus_accessible,
+ Practices.is_trans_other_accessible AS Practices_is_trans_other_accessible,
+ Practices.is_trans_train_accessible AS Practices_is_trans_train_accessible,
+ Practices.is_tympanometry_audiometry_services AS Practices_is_tympanometry_audiometry_services,
+ Practices.is_xray_services_following AS Practices_is_xray_services_following,
+ Practices.is_xray_services_list_certs AS Practices_is_xray_services_list_certs,
+ Practices.lab_services_certs_list AS Practices_lab_services_certs_list,
+ Practices.limitations_age_top AS Practices_limitations_age_top,
+ Practices.limitations_female_only_is AS Practices_limitations_female_only_is,
+ Practices.limitations_male_only_is AS Practices_limitations_male_only_is,
+ Practices.limitations_other_explanation AS Practices_limitations_other_explanation,
+ Practices.limitations_other_is AS Practices_limitations_other_is,
+ Practices.location_listed_in_dir_is AS Practices_location_listed_in_dir_is,
+ Practices.non_physician_provider_is AS Practices_non_physician_provider_is,
+ Practices.other_services_explanation AS Practices_other_services_explanation,
+ Practices.provider_cert_adv_cardiac_life_support_expire_date AS Practices_provider_cert_adv_cardiac_life_support_expire_date,
+ Practices.provider_cert_adv_neonatal_life_support_expire_date AS Practices_provider_cert_adv_neonatal_life_support_expire_date,
+ Practices.provider_cert_adv_trauma_life_support_expire_date AS Practices_provider_cert_adv_trauma_life_support_expire_date,
+ Practices.provider_cert_advanced_ob_life_support_expire_date AS Practices_provider_cert_advanced_ob_life_support_expire_date,
+ Practices.provider_cert_basic_life_support_expire_date AS Practices_provider_cert_basic_life_support_expire_date,
+ Practices.provider_cert_cardio_pulmonary_resuscitation_expire_date AS Practices_provider_cert_cardio_pulmonary_resuscitation_expire_date,
+ Practices.provider_cert_other_expire_date AS Practices_provider_cert_other_expire_date,
+ Practices.provider_cert_other_specify AS Practices_provider_cert_other_specify,
+ Practices.provider_cert_pediatric_adv_life_support_expire_date AS Practices_provider_cert_pediatric_adv_life_support_expire_date,
+ Practices.service_type_group_multi_speciality_is AS Practices_service_type_group_multi_speciality_is,
+ Practices.service_type_group_primary_is AS Practices_service_type_group_primary_is,
+ Practices.service_type_group_single_specialty_is AS Practices_service_type_group_single_specialty_is,
+ Practices.service_type_solo_primary_is AS Practices_service_type_solo_primary_is,
+ Practices.service_type_solo_specialty_is AS Practices_service_type_solo_specialty_is,
+ Practices.services_other_disabled_explanation AS Practices_services_other_disabled_explanation,
+ Practices.site_medicaid_number AS Practices_site_medicaid_number,
+ Practices.tax_number AS Practices_tax_id_number,
+ Practices.trans_other_accessible_explanation AS Practices_trans_other_accessible_explanation,
+ Practices.xray_services_certs_list AS Practices_xray_services_certs_list,
+ ProviderStates.name AS ProviderStates_name,
+ Genders.name AS Genders_name,
+ Birth_Addresss.name AS Birth_Addresss_name,
+ Birth_Addresss.line1 AS Birth_Addresss_line1,
+ Birth_Addresss.line2 AS Birth_Addresss_line2,
+ Birth_Addresss.zip AS Birth_Addresss_zip,
+ Birth_States.name AS Birth_States_name,
+ Birth_States.state_abbr AS Birth_States_state_abbr,
+ Home_Addresss.line1 AS home_address_line1,
+ Home_Addresss.zip AS home_address_postal,
+ Home_States.state_abbr AS home_address_state,
+ Home_Citys.name AS home_address_city,
+ Corr_Addresss.line1 AS correspondence_address_line1,
+ Corr_Addresss.zip AS correspondence_address_postal,
+ Corr_States.state_abbr AS correspondence_address_state,
+ Corr_Citys.name AS correspondence_address_city,
+ Provider_Addresss.line1 AS Provider_Addresss_line1,
+ Provider_Addresss.line2 AS Provider_Addresss_line2,
+ Provider_Addresss.zip AS Provider_Addresss_zip,
+ Provider_States.name AS Provider_States_name,
+ Provider_States.state_abbr AS Provider_States_state_abbr,
+ Provider_Citys.name AS Provider_Citys_name,
+ Provider_Countys.name AS Provider_Countys_name,
+ Provider_Countrys.name AS Provider_Countrys_name,
+ Corr_Phones.phone AS Corr_Phones_phone,
+ Corr_Fax_Phones.phone AS Corr_Fax_Phones_phone,
+ Practice_Fax_Phones.phone AS Practices_fax,
+ Practice_Phones.phone AS Practices_office_phone,
+ Home_Phones.phone AS phone_home,
+
+ CredentialOrganizations.name AS Practices_credentialing_contact,
+ CredentialOrganizations.email AS Practices_credentialing_contact_email,
+ CredentialOrganizations.credentialing_contact as Practices_credentialing_contact,
+ CredentialOrganizationsPhones.phone AS Practices_credentialing_contact_phone,
+ CredentialOrganizationsFax.phone  AS Practices_credentialing_contact_fax,
+ CredentialOrganizationsAddresss.line1  AS Practices_credentialing_contact_line1,
+ CredentialOrganizationsStates.state_abbr AS Practices_credentialing_contact_state,
+ CredentialOrganizationsCitys.name AS Practices_credentialing_contact_city,
+
+ Billingcompanys.name AS Practices_billing_company_name,
+ Billingcompanys.email AS Practices_billing_company__contact_email,
+ Billingcompanys.billing_representative as Practices_billing_company_billing_representative,
+ Billingcompanys.check_payable_to as Practices_billing_company_check_payable_to,
+ Billingcompanys.is_bill_electronic as Practices_billing_company_bill_electronic_is,
+ Billingcompanys.billing_department_if_hospital as Practices_if_hospital_based_department_name,
+ BillingcompanyPhones.phone AS Practices_billing_company_contact_phone,
+ BillingcompanyFax.phone  AS Practices_billing_company_contact_fax,
+ BillingcompanyAddresss.line1  AS Practices_billing_company_contact_line1,
+ BillingcompanyStates.state_abbr AS Practices_billing_company_contact_state,
+ BillingcompanyCitys.name AS Practices_billing_company_contact_city,
+
+ Servicecodes.name AS Servicecodes_name,
+
+
+ non_Providers_0.name AS Practices_non_physician_provider_name_0,
+ non_Providers_0.name AS Practices_non_physician_provider_0_designation,
+ non_Providers_0.name AS Practices_non_physician_provider_0_state,
+ non_Providers_0.name AS Practices_non_physician_provider_0_license_number,
+ non_Providers_0_States.name AS Practices_non_physician_provider_0_state,
+
+ non_Providers_1.name AS Practices_non_physician_provider_name_1,
+ non_Providers_1.name AS Practices_non_physician_provider_1_designation,
+ non_Providers_1.name AS Practices_non_physician_provider_1_state,
+ non_Providers_1.name AS Practices_non_physician_provider_1_license_number,
+ non_Providers_1_States.name AS Practices_non_physician_provider_1_state,
+
+ non_Providers_2.name AS Practices_non_physician_provider_name_2,
+ non_Providers_2.name AS Practices_non_physician_provider_2_designation,
+ non_Providers_2.name AS Practices_non_physician_provider_2_state,
+ non_Providers_2.name AS Practices_non_physician_provider_2_license_number,
+ non_Providers_2_States.name AS Practices_non_physician_provider_2_state,
+
+ non_Providers_3.name AS Practices_non_physician_provider_name_3,
+ non_Providers_3.name AS Practices_non_physician_provider_3_designation,
+ non_Providers_3.name AS Practices_non_physician_provider_3_state,
+ non_Providers_3.name AS Practices_non_physician_provider_3_license_number,
+ non_Providers_3_States.name AS Practices_non_physician_provider_3_state,
+
+ non_Providers_4.name AS Practices_non_physician_provider_name_4,
+ non_Providers_4.name AS Practices_non_physician_provider_4_designation,
+ non_Providers_4.name AS Practices_non_physician_provider_4_state,
+ non_Providers_4.name AS Practices_non_physician_provider_4_license_number,
+ non_Providers_4_States.name AS Practices_non_physician_provider_4_state,
+
+ non_Providers_5.name AS Practices_non_physician_provider_name_5,
+ non_Providers_5.name AS Practices_non_physician_provider_5_designation,
+ non_Providers_5.name AS Practices_non_physician_provider_5_state,
+ non_Providers_5.name AS Practices_non_physician_provider_5_license_number,
+ non_Providers_5_States.name AS Practices_non_physician_provider_5_state,
+
+
+ Provider_0_Languages.name AS Provider_0_Languages_name,
+ Provider_1_Languages.name AS Provider_1_Languages_name,
+ Provider_2_Languages.name AS Provider_2_Languages_name,
+
+ Staff_0_Languages.name AS Staff_0_Languages_name,
+ Staff_1_Languages.name AS Staff_1_Languages_name,
+ Staff_2_Languages.name AS Staff_2_Languages_name
+
+FROM `Providers`
+LEFT JOIN ProviderPractices ON ProviderPractices.Provider_id = Providers.id
+LEFT JOIN ProviderTypes ON ProviderTypes.id = Providers.ProviderType_id
+LEFT JOIN Practices ON ProviderPractices.Practice_id = Practices.id
+LEFT JOIN ProviderStates ON Providers.ProviderState_id = ProviderStates.id
+LEFT JOIN Genders ON Gender_id = Genders.id
+LEFT JOIN Addresss AS Birth_Addresss ON Birth_Address_id = Birth_Addresss.id
+LEFT JOIN States AS Birth_States ON Birth_Addresss.State_id = Birth_States.id
+LEFT JOIN Addresss AS Home_Addresss ON Home_Address_id = Home_Addresss.id
+LEFT JOIN States AS Home_States ON Home_Addresss.State_id = Home_States.id
+LEFT JOIN Citys AS Home_Citys ON Home_Addresss.City_id = Home_States.id
+LEFT JOIN Countys AS Home_Countys ON Home_Addresss.County_id = Home_States.id
+LEFT JOIN Countrys AS Home_Countrys ON Home_Addresss.Country_id = Home_States.id
+LEFT JOIN Addresss AS Corr_Addresss ON Corr_Address_id = Corr_Addresss.id
+LEFT JOIN States AS Corr_States ON Corr_Addresss.State_id = Corr_States.id
+LEFT JOIN Citys AS Corr_Citys ON Corr_Addresss.State_id = Corr_Citys.id
+LEFT JOIN Countys AS Corr_Countys ON Corr_Addresss.State_id = Corr_Countys.id
+LEFT JOIN Countrys AS Corr_Countrys ON Corr_Addresss.Country_id = Corr_Countrys.id
+LEFT JOIN Addresss AS Provider_Addresss ON Address_id = Provider_Addresss.id
+LEFT JOIN States AS Provider_States ON Provider_Addresss.State_id = Provider_States.id
+LEFT JOIN Citys AS Provider_Citys ON Provider_Addresss.City_id = Provider_Citys.id
+LEFT JOIN Countys AS Provider_Countys ON Provider_Addresss.County_id = Provider_Countys.id
+LEFT JOIN Countrys AS Provider_Countrys ON Provider_Addresss.Country_id = Provider_Countrys.id
+LEFT JOIN Phones AS Corr_Phones ON Corr_Phone_id = Corr_Phones.id
+LEFT JOIN Phones AS Corr_Fax_Phones ON Corr_Fax_Phone_id = Corr_Fax_Phones.id
+LEFT JOIN Phones AS Home_Phones ON Home_Phone_id = Home_Phones.id
+LEFT JOIN Phones AS Practice_Fax_Phones ON Practices.Fax_Phone_id = Practice_Fax_Phones.id
+LEFT JOIN Phones AS Practice_Phones ON Practices.Phone_id = Practice_Phones.id
+
+LEFT JOIN CredentialOrganizations ON CredentialOrganization_id  = CredentialOrganizations.id
+LEFT JOIN Phones AS CredentialOrganizationsPhones ON CredentialOrganizations.Phone_id = CredentialOrganizationsPhones.id
+LEFT JOIN Phones AS CredentialOrganizationsFax ON CredentialOrganizations.Fax_Phone_id = CredentialOrganizationsFax.id
+LEFT JOIN Addresss AS CredentialOrganizationsAddresss ON CredentialOrganizations.Address_id = CredentialOrganizationsAddresss.id
+LEFT JOIN States AS CredentialOrganizationsStates ON CredentialOrganizationsAddresss.State_id = CredentialOrganizationsStates.id
+LEFT JOIN Citys AS CredentialOrganizationsCitys ON CredentialOrganizationsAddresss.City_id = CredentialOrganizationsCitys.id
+
+LEFT JOIN Billingcompanys ON Billingcompany_id  = Billingcompanys.id
+LEFT JOIN Phones AS BillingcompanyPhones ON Billingcompanys.Phone_id = BillingcompanyPhones.id
+LEFT JOIN Phones AS BillingcompanyFax ON Billingcompanys.Fax_Phone_id = BillingcompanyFax.id
+LEFT JOIN Addresss AS BillingcompanyAddresss ON Billingcompanys.Address_id = BillingcompanyAddresss.id
+LEFT JOIN States AS BillingcompanyStates ON BillingcompanyAddresss.State_id = BillingcompanyStates.id
+LEFT JOIN Citys AS BillingcompanyCitys ON BillingcompanyAddresss.City_id = BillingcompanyCitys.id
+
+
+LEFT JOIN Servicecodes ON Servicecodes.id = Servicecode_id
+
+
+LEFT JOIN Nonphysicians AS non_Providers_0 ON a_0_Nonphysician_id = non_Providers_0.id
+LEFT JOIN Nonphysicians AS non_Providers_1 ON a_1_Nonphysician_id = non_Providers_1.id
+LEFT JOIN Nonphysicians AS non_Providers_2 ON a_2_Nonphysician_id = non_Providers_2.id
+LEFT JOIN Nonphysicians AS non_Providers_3 ON a_3_Nonphysician_id = non_Providers_3.id
+LEFT JOIN Nonphysicians AS non_Providers_4 ON a_4_Nonphysician_id = non_Providers_4.id
+LEFT JOIN Nonphysicians AS non_Providers_5 ON a_5_Nonphysician_id = non_Providers_5.id
+
+LEFT JOIN States AS  non_Providers_0_States ON  non_Providers_0.State_id = non_Providers_0_States.id
+LEFT JOIN States AS  non_Providers_1_States ON  non_Providers_1.State_id = non_Providers_1_States.id
+LEFT JOIN States AS  non_Providers_2_States ON  non_Providers_2.State_id = non_Providers_2_States.id
+LEFT JOIN States AS  non_Providers_3_States ON  non_Providers_3.State_id = non_Providers_3_States.id
+LEFT JOIN States AS  non_Providers_4_States ON  non_Providers_4.State_id = non_Providers_4_States.id
+LEFT JOIN States AS  non_Providers_5_States ON  non_Providers_5.State_id = non_Providers_5_States.id
+
+LEFT JOIN Languages AS Provider_0_Languages ON Provider_0_Language_id = Provider_0_Languages.id
+LEFT JOIN Languages AS Provider_1_Languages ON Provider_1_Language_id = Provider_1_Languages.id
+LEFT JOIN Languages AS Provider_2_Languages ON Provider_2_Language_id = Provider_2_Languages.id
+LEFT JOIN Languages AS Staff_0_Languages ON Staff_0_Language_id = Staff_0_Languages.id
+LEFT JOIN Languages AS Staff_1_Languages ON Staff_1_Language_id = Staff_1_Languages.id
+LEFT JOIN Languages AS Staff_2_Languages ON Staff_2_Language_id = Staff_2_Languages.id
+WHERE
+Providers.id = 
