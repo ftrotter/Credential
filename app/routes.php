@@ -27,6 +27,8 @@ Route::post("doctors", "DoctorsController@post_index");
 Route::get("documents/new", "DocumentsController@action_docform");
 Route::post("documents/notify", "DocumentsController@action_notify");
 
+Route::get("compile/dashboard/{npi}", "CompileController@dashboard");
+Route::get("compile/practiceform/{npi}/{sql_file}", "CompileController@practiceform");
 
 Route::get("report/list", "ReportsController@index");
 Route::get("/REPORT/{object_name}", "ReportsController@report");
