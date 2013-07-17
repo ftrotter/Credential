@@ -131,16 +131,6 @@ ORDER BY `expire_date`
 
 	public function post_index(){
 
-		if(
-				!isset($_POST['npi']) ||
-				!isset($_POST['name_first']) ||
-				!isset($_POST['name_last']) 
-		){
-
-			echo "I really need to have at least npi, name_first and name_last to make a record... try again";
-			exit();
-
-		}
 
 
 		$npi = $_POST['npi']; //get my id from the post	
@@ -164,7 +154,7 @@ ORDER BY `expire_date`
 
 	public function get_list(){
 
-		$Doctor = new Doctor();
+		$Doctor = new Doctor(); // This gets Mongo compiled doctors
 		$DoctorList = $Doctor->get_all();
 		
 		$select_array = array();
@@ -178,6 +168,19 @@ ORDER BY `expire_date`
 		}	
 
 		$this->view_data['list'] = $select_array;
+
+
+		$next_select_array = array();
+		$Providers = Provider::all();
+		foreach($Providers as $a_provider){
+			$next_select_array[$a_provider->npi] = array(
+				'first_name' => $a_provider->first_name,
+				'last_name' => $a_provider->last_name,
+					);
+
+		}
+
+		$this->view_data['data_list'] = $next_select_array;
 
 		return($this->_render('doctors_list'));
 		
