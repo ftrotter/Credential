@@ -1,0 +1,22 @@
+{
+  "steps": {
+    "thumb": {
+      "robot": "/document/thumbs",
+      "width": 100,
+      "height": 100,
+      "resize_strategy": "pad",
+      "background": "#000000",
+      "format": "png"
+    },
+    "export": {
+      "use": [
+        ":original",
+        "thumb"
+      ],
+      "robot": "/cloudfiles/store",
+      "user": "YOURRACKSPACEFILESUSER",
+      "key": "YOURRACKSPACEKEYGOESHERE",
+      "container": "wrangler"
+    }
+  }
+}
