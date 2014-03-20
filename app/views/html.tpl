@@ -64,7 +64,9 @@
           <a class="brand" href="#">{$title}</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-              Logged in as {$displayName} (<a href="/logout" class="navbar-link"> logout</a>)
+              Logged in as {$displayName} 
+      <!-- no logout until we have a login -->
+	<!-- (<a href="/logout" class="navbar-link"> logout</a>) -->
             </p>
 	<!-- loading menu_contents -->
 {$menu_contents}
